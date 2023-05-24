@@ -4,6 +4,7 @@ var _express = _interopRequireDefault(require("express"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // const express = require("express");
 
+require('dotenv').config();
 const app = (0, _express.default)();
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
