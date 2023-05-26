@@ -1,8 +1,13 @@
-// const express = require("express");
 import express from "express"
 require('dotenv').config()
 
+import rutasAuth from "./routes/auth.routes.js"
+
 const app = express();
+
+// habilitamos las rutas con express (app)
+app.use("/api", rutasAuth) // rutas o urls de autenticación
+
 
 const PORT = process.env.PORT || 3000;
 
