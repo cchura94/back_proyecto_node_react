@@ -1,9 +1,13 @@
 import express from "express"
+import cors from "cors"
 require('dotenv').config()
 
 import rutasAuth from "./routes/auth.routes.js"
 
 const app = express();
+
+// habilitamos CORS
+app.use(cors())
 
 app.use(express.json()) // para capturar datos (req.body)
 
