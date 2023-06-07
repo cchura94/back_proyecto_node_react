@@ -10,16 +10,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre_completo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(50),
+        allowNull: false,
       },
       correo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(200)
       },
       ci_nit: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(15),
+        allowNull: false,
+        defaultValue: 0
       },
       telefono: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(15)
       },
       createdAt: {
         allowNull: false,

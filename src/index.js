@@ -3,6 +3,7 @@ import cors from "cors"
 require('dotenv').config()
 
 import rutasAuth from "./routes/auth.routes.js"
+import rutasAdmin from "./routes/admin.routes.js"
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json()) // para capturar datos (req.body)
 
 // habilitamos las rutas con express (app)
 app.use("/api", rutasAuth) // rutas o urls de autenticación
+app.use("/api", rutasAdmin) // rutas o urls de autenticación
 
 
 const PORT = process.env.PORT || 3000;

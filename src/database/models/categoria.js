@@ -11,10 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.Categoria.hasMany(models.Producto, {
+        foreignKey: "categoriaId"
+      })
     }
   }
   Categoria.init({
-    nombre: DataTypes.STRING,
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notNull: {
+          args: true,
+          msg: 'El nombre categoria es obligatorio'
+        },
+        len: {
+          args: [3, 30],
+          msg: 'El campo nombre deber estar entre 3 a 30 caracteres'
+        }
+      }
+    },
     detalle: DataTypes.TEXT
   }, {
     sequelize,

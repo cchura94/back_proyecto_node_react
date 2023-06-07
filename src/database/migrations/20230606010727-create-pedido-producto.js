@@ -14,17 +14,20 @@ module.exports = {
         references: {
           model: 'Pedidos',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       productoId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Productos',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       cantidad: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 1
       },
       createdAt: {
         allowNull: false,

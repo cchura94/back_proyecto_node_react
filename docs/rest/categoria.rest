@@ -1,0 +1,32 @@
+### Lista categorias
+GET http://127.0.0.1:3000/api/categoria
+Accept: application/json
+
+### Guardar Categoria
+POST http://127.0.0.1:3000/api/categoria
+Accept: application/json
+Content-Type: application/json
+
+{
+    "nombre": "JUGUETE",
+    "detalle": "JUguetes para niños"
+}
+
+### Mostrar Categoria
+GET http://127.0.0.1:3000/api/categoria/3
+Accept: application/json
+
+
+### Modificar Categoria
+PUT http://127.0.0.1:3000/api/categoria/3
+Accept: application/json
+Content-Type: application/json
+
+{
+    "nombre": "Ropa Modificada",
+    "detalle": "Ropa para damas"
+}
+
+### Eliminar Categoria
+DELETE http://127.0.0.1:3000/api/categoria/3
+Accept: application/json

@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(200),
         allowNull: false,
       },
       password: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(200),
         allowNull: false,
       },
       status: {

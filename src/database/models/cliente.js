@@ -11,10 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.Cliente.hasMany(models.Pedido, {
+        foreignKey: "clienteId"
+      })
     }
   }
   Cliente.init({
-    nombre_completo: DataTypes.STRING,
+    nombre_completo: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     correo: DataTypes.STRING,
     ci_nit: DataTypes.STRING,
     telefono: DataTypes.STRING

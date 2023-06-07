@@ -10,10 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       fecha: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
       },
       estado: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 1
       },
       observacion: {
         type: Sequelize.TEXT
@@ -23,7 +25,8 @@ module.exports = {
         references: {
           model: 'Clientes',
           key: 'id'
-        }
+        },
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
