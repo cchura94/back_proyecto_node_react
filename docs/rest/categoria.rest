@@ -8,12 +8,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "nombre": "JUGUETE",
-    "detalle": "JUguetes para niños"
+    "nombre": "PRUEBA",
+    "detalle": "prueba de prueba"
 }
 
 ### Mostrar Categoria
-GET http://127.0.0.1:3000/api/categoria/3
+GET http://127.0.0.1:3000/api/categoria/2
 Accept: application/json
 
 
@@ -23,10 +23,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "nombre": "Ropa Modificada",
-    "detalle": "Ropa para damas"
+  "nombre": "JUGUETES",
+  "detalle": "Juguetes de prueba"
 }
 
 ### Eliminar Categoria
-DELETE http://127.0.0.1:3000/api/categoria/3
+DELETE http://127.0.0.1:3000/api/categoria/7
 Accept: application/json
