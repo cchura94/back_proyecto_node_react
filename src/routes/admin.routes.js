@@ -1,5 +1,6 @@
 import categoriaController from "../controllers/categoria.controller";
-import authMiddleware from "../middlewares/auth.middleware"
+import productoController from "../controllers/producto.controller";
+import authMiddleware from "../middlewares/auth.middleware";
 
 const { Router } = require("express");
 
@@ -12,6 +13,11 @@ Route.get('/categoria/:id', authMiddleware, categoriaController.mostrar);
 Route.put('/categoria/:id', authMiddleware, categoriaController.modificar);
 Route.delete('/categoria/:id', authMiddleware, categoriaController.eliminar);
 
-
+// rutas producto
+Route.get('/producto', authMiddleware, productoController.listar);
+Route.post('/producto', authMiddleware, productoController.guardar);
+Route.get('/producto/:id', authMiddleware, productoController.mostrar);
+Route.put('/producto/:id', authMiddleware, productoController.modificar);
+Route.delete('/producto/:id', authMiddleware, productoController.eliminar);
 
 export default Route;

@@ -6,8 +6,8 @@ export default {
         try {
             // /api/producto?q=teclado&page=1&limit=10
             const q = req.query.q;
-            const page = req.query.page;
-            const limit = req.query.limit
+            const page = parseInt(req.query.page);
+            const limit = parseInt(req.query.limit)
 
             const offset = (page-1) * limit
 
