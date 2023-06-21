@@ -17,6 +17,7 @@ export default {
                     [Op.like]: `%${q}%`
                   }
                 },
+                include: [models.Categoria],
                 offset: offset,
                 limit: limit
               });
