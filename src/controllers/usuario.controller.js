@@ -1,4 +1,5 @@
 import { Op } from "sequelize";
+import bcrypt from 'bcrypt';
 import models from "./../database/models"
 
 export default {
@@ -12,6 +13,7 @@ export default {
             const offset = (page-1) * limit
 
             const usuarios = await models.User.findAndCountAll({
+                attributes: ['id', 'email', 'createdAt'],
                 where: {
                   email: {
                     [Op.like]: `%${q}%`
@@ -20,8 +22,10 @@ export default {
                 offset: offset,
                 limit: limit
               });
+
+              const {password, ...rest} = usuarios
               
-              return res.status(200).json(usuarios);
+              return res.status(200).json(rest);
         } catch (error) {
             return res.status(500).json({message: error.message})            
         }
@@ -30,7 +34,11 @@ export default {
     guardar: async (req, res) => {
         try {
             const datos = req.body;
-            const user = await models.User.create(datos);
+            
+            const hash = await bcrypt.hash(datos.password, 12)
+            // registrar al user
+            const user = await models.User.create({email: datos.email, password: hash})
+
             if(user.id){
                 return res.status(201).json({message: 'Usuario Registrado'})  
             }
@@ -58,12 +66,21 @@ export default {
             const id = req.params.id;
             const user = await models.User.findByPk(id);
             if(user){
-                await models.user.update(req.body, {
-                    where: {
-                        id: id
-                    }
-                })
-                return res.status(200).json({message: "user Actualizada"})
+                if(req.body.password){
+                    let hash = await bcrypt.hash(req.body.password, 12)
+                    await models.User.update({ email: req.body.email, password: hash }, {
+                        where: {
+                            id: id
+                        }
+                    })
+                }else{
+                    await models.User.update(req.body , {
+                        where: {
+                            id: id
+                        }
+                    })
+                }
+                return res.status(200).json({message: "user Actualizado"})
             }else{
                 return res.status(404).json({message: "El Producto no existe"});
             }
