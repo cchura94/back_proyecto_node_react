@@ -3,6 +3,7 @@ import productoController from "../controllers/producto.controller";
 import userController from "../controllers/usuario.controller";
 import clienteController from "../controllers/cliente.controller";
 import authMiddleware from "../middlewares/auth.middleware";
+import pedidoController from "../controllers/pedido.controller";
 
 const { Router } = require("express");
 
@@ -34,5 +35,13 @@ Route.post('/cliente', authMiddleware, clienteController.store);
 Route.get('/cliente/:id', authMiddleware, clienteController.show);
 Route.put('/cliente/:id', authMiddleware, clienteController.update);
 Route.delete('/cliente/:id', authMiddleware, clienteController.destroy);
+
+// para pedido
+Route.post('/pedido/nuevo-cliente', authMiddleware, pedidoController.nuevoCliente);
+Route.get('/pedido/buscar-cliente', authMiddleware, pedidoController.buscarCliente);
+
+Route.get('/pedido', authMiddleware, pedidoController.index);
+Route.post('/pedido', authMiddleware, pedidoController.store);
+Route.get('/pedido/:id', authMiddleware, pedidoController.show);
 
 export default Route;
