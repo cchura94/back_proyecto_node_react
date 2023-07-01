@@ -12,6 +12,9 @@ app.use(cors())
 
 app.use(express.json()) // para capturar datos (req.body)
 
+// archivos estaticos
+app.use(express.static('public'))
+
 // habilitamos las rutas con express (app)
 app.use("/api", rutasAuth) // rutas o urls de autenticación
 app.use("/api", rutasAdmin) // rutas o urls de autenticación

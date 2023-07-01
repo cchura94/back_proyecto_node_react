@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <script>
+      if (localStorage.theme === 'dark' || !('theme' in localStorage)) {
+        document.querySelector('html').classList.add('light');
+        document.querySelector('html').style.colorScheme = 'light';
+      } else {
+        document.querySelector('html').classList.remove('dark');
+        document.querySelector('html').style.colorScheme = 'light';
+      }        
+    </script>  
+    <script type="module" crossorigin src="/assets/index-f5e7d398.js"></script>
+    <link rel="stylesheet" href="/assets/index-10c238cf.css">
+  </head>
+  <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <script>
+      if (localStorage.getItem('sidebar-expanded') == 'true') {
+          document.querySelector('body').classList.add('sidebar-expanded');
+      } else {
+          document.querySelector('body').classList.remove('sidebar-expanded');
+      }
+  </script>   
+    <div id="root"></div>
+    
+  </body>
+</html>

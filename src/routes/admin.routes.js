@@ -5,9 +5,27 @@ import clienteController from "../controllers/cliente.controller";
 import authMiddleware from "../middlewares/auth.middleware";
 import pedidoController from "../controllers/pedido.controller";
 
+// subida de archvios o imagenes
+import multer from "multer"
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/imagenes')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, uniqueSuffix + '-' + file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage })
+
 const { Router } = require("express");
 
 const Route = Router()
+
+// actualizar imagen productos
+Route.post('/producto/:id/actualizar-imagen', authMiddleware, upload.single("imagen"), productoController.actualizarImagen);
 
 // rutas categoria
 Route.get('/categoria', authMiddleware, categoriaController.listar);

@@ -4,18 +4,13 @@ import models from "./../database/models"
 export default {
     index: async (req, res) => {
         try {
-            const q = req.query.q;
+            const q = req.query.q?req.query.q:'2023-06-29 01:35:54';
             const page = parseInt(req.query.page);
             const limit = parseInt(req.query.limit)
 
             const offset = (page-1) * limit
 
             const pedidos = await models.Pedido.findAndCountAll({
-                where: {
-                    fecha: {
-                    [Op.like]: `%${q}%`
-                  }
-                },
                 include: [models.Cliente, models.Producto],
                 offset: offset,
                 limit: limit

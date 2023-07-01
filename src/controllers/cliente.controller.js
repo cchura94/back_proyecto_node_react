@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import models from "./../database/models"
 
 export default {

@@ -86,5 +86,19 @@ export default {
         } catch (error) {
             return res.status(500).json({message: error.message})
         } 
+    },
+    actualizarImagen: async (req, res) => {
+        console.log(req.file)
+        const id = req.params.id;
+
+        let datos = {}
+        if(req.file){
+            datos.imagen = 'imagenes/'+req.file.filename
+        }
+
+        console.log(datos.imagen)
+        await models.Producto.update(datos, {where: {id}})
+
+        return res.status(200).json({message: 'Imagen Actualizada'});
     }
 }
